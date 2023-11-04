@@ -2,13 +2,10 @@ const express = require('express');
 const logger = require('morgan')
 const cors = require("cors");
 const dotenv = require('dotenv');
-// const cookieParser = require('cookie-parser')
+
+const { authRouter } = require('./routes/api');
 
 dotenv.config({ path: './.env' }); 
-
-// const authRouter = require("./routes/api/auth");
-// const transactionsRouter = require("./routes/api/transactions");
-// const { swaggerRouter } = require("./routes/api");
 
 const app = express();
 
@@ -19,19 +16,15 @@ app.use(cors());
 
 app.use(express.json());
 
-// app.use(cookieParser());
-
-// app.use("/api", authRouter);
-// app.use("/api/transactions", transactionsRouter);
-// app.use("/api/api-docs", swaggerRouter);
+app.use("/api/auth", authRouter);
 
 app.use((req, res) => {
     res.status(404).json({ message: "Not found" });
-  });
-  
-  app.use((err, req, res, next) => {
+});
+
+app.use((err, req, res, next) => {
     const { status = 500, message = "Server error" } = err;
     res.status(status).json({ message });
-  });
-  
-  module.exports = app;
+});
+
+module.exports = app;
