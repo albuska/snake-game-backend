@@ -4,7 +4,6 @@ const cors = require("cors");
 const dotenv = require('dotenv');
 
 const { gamesRouter } = require('./routes/api');
-console.log("gamesRouter", gamesRouter);
 
 dotenv.config({ path: './.env' }); 
 

@@ -4,7 +4,7 @@ const { ctrlWrapper } = require("../../helpers");
 
 const createGame = async (req, res) => {
 
-    const { player_name } = req.body;
+    const { player_name, score } = req.body;
 
     if (!player_name || player_name.trim() === "") {
       return res.status(400).json({ error: "Неправильне ім'я гравця" });
@@ -18,7 +18,7 @@ const createGame = async (req, res) => {
   INSERT INTO games (id, player_name, score) 
   values ($1, $2, $3) 
   RETURNING id, player_name, score`,
-    [id, player_name, 0]
+    [id, player_name, score]
   );
 
   if (newGame.length === 0) {
@@ -27,7 +27,7 @@ const createGame = async (req, res) => {
 
   console.log("newGame", newGame);
 
-  const { player_name: dbName, score } = newGame[0];
+  const { player_name: dbName, score: totalScore } = newGame[0];
 
   console.log("dbName", dbName);
   
@@ -35,7 +35,7 @@ const createGame = async (req, res) => {
     game: {
       id,
       player_name: dbName,
-      score
+      score: totalScore
     },
   });
 };

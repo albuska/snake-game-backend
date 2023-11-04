@@ -1,6 +1,6 @@
 CREATE TABLE games (
-  id SERIAL PRIMARY KEY,
+  id VARCHAR(255) PRIMARY KEY,
   player_name VARCHAR(255) NOT NULL,
-  score INT NOT NULL,
-  game_data JSONB
+  score INT NOT NULL
+--   game_data JSONB
 );
