@@ -9,6 +9,7 @@ const { PORT} = process.env;
 const register = async (req, res) => {
 console.log(process.env);
 console.log(PORT);
+
 //   const { name, email, password} = req.body;
 
 //   const id = uuidv4(); 
