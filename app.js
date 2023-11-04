@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require('dotenv');
 
 const { gamesRouter } = require('./routes/api');
+console.log("gamesRouter", gamesRouter);
 
 dotenv.config({ path: './.env' }); 
 
@@ -16,8 +17,7 @@ app.use(cors());
 
 app.use(express.json());
 
-// app.use("/api/games", gamesRouter);
-app.use("/api", gamesRouter);
+app.use("/api/games", gamesRouter);
 
 app.use((req, res) => {
     res.status(404).json({ message: "Not found" });
