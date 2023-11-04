@@ -1,5 +1,5 @@
-const ctrlUsers = require("./users");
+const ctrlGames = require("./games");
 
 module.exports = {
-    ctrlUsers,
+  ctrlGames,
   };

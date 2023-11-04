@@ -1,8 +1,8 @@
 const express = require("express");
-const { ctrlUsers } = require("../../controllers");
+const { ctrlGames } = require("../../controllers");
 const router = express.Router();
 
-router.post("/auth/createUser", ctrlUsers.createUser) 
+router.post("/games/createGames", ctrlGames.createGame) 
 
 // router.get("/current", authenticate, ctrlUsers.getCurrent); 
 
