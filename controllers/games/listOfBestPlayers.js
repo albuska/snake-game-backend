@@ -1,12 +1,10 @@
 const db = require("../../db");
 const { ctrlWrapper } = require("../../helpers");
 
-const listOfBestPlayers = async (req, res) => {
+const listOfBestPlayers = async (_, res) => {
   const {rows: players} = await db.query(
-    `SELECT player_name, score FROM games ORDER BY score DESC`
+    `SELECT player_name, score FROM games ORDER BY score DESC LIMIT 5`
   )  
-
-  console.log("list", players);
 
   res.status(200).json({ players });
 }
